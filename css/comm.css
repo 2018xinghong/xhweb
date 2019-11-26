@@ -1,0 +1,65 @@
+/* 重置样式 */
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, dl, dt, dd, form, table, tr, iframe, div, a, span {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-size: 14px;
+    font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+    color: #666;
+}
+ul, ol {
+    list-style: none;
+}
+img {
+    border: none;
+    vertical-align: middle;
+}
+a {
+    color: #666;
+    text-decoration: none;
+}
+a:hover {
+    color: #f37b1d;
+}
+table {
+    border-collapse: collapse;
+}
+
+i, em {
+    font-style: normal;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.mr10 {
+    margin-right: 10px;
+}
+.ml10 {
+    margin-left: 10px;
+}
+.mt10 {
+    margin-top: 10px;
+}
+.mb10 {
+    margin-bottom: 10px;
+}
+.tac {
+    text-align: center;
+}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+
+
+/* 通用样式 */
