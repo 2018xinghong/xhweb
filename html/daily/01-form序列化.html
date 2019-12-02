@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>form表格记录数据</title>
+    <style>
+    </style>
+</head>
+<body>
+    <form method="post" id="form">
+        <input type="text" name="username"><br>
+        <input type="text" name="password"><br><br>
+        <input class="btn btn1" type="button" value="serialize">
+        <input class="btn btn2" type="button" value="serializeArray">
+        <input class="btn btn3" type="button" value="serializeJson">
+        <input class="btn btn4" type="button" value="自定义序列化方法">
+    </form>
+    <h2>表单序列化数据</h2>
+    <div class="result">
+
+    </div>
+</body>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script>
+$(function() {
+    // 自定义表单序列化方法
+    jQuery.prototype.serializeObject = function(){ 
+        var obj=new Object(); 
+        $.each(this.serializeArray(),function(index,param){ 
+            if(!(param.name in obj)){ 
+                obj[param.name]=param.value; 
+            } 
+        }); 
+        return obj; 
+    };
+
+
+    var data;   // 记录form表单数据
+
+    // 序列化方法：serialize()
+    $(".btn1").click(function() {
+        data = $("#form").serialize();
+        $(".result").html(data);
+        console.log("serialize: ",data);
+    })
+    // 序列化方法：serializeArray()
+    $(".btn2").click(function() {
+        data = $("#form").serializeArray();
+        $(".result").html(JSON.stringify(data));
+        console.log("serializeArray: ",data);
+    })
+    // 序列化方法：serializeJson()
+    $(".btn3").click(function() {
+        data = $("#form").serializeJson();
+        $(".result").html(JSON.stringify(data));
+        console.log("serializeJson: ",data);
+    })
+    // 自定义序列化方法
+    $(".btn4").click(function() {
+        data = $("#form").serializeObject();
+        $(".result").html(JSON.stringify(data));
+        console.log("自定义序列化方法: ",data);
+    })
+})
+</script>
+</html>
