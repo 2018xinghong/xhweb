@@ -9,24 +9,36 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-   <div class="wrap">
-        <div class="top">
-            头部
-        </div>
-        <div class="main">
-            <div class="left">
+    <div class="wrap">
+        <header class="top claerfix">
+            <div class="header-left fl">
+                <div class="logo">
+                    my logon
+                </div>
+                <div class="slide-menu">
+                    <img src="./img/menu.png" alt="">
+                </div>
+            </div>
+            <div class="header-right fr">
+                user
+            </div>
+        </header>
+        <div class="box clearfix">
+            <div class="sidebar">
                 left
             </div>
-            <div class="right">
+            <div class="main">
                 <div class="content">
                     内容区
                 </div>
             </div>
         </div>
-   </div> 
+    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
-    
+    $(".slide-menu").click(function() {
+        $(".sidebar").toggleClass("sidebar-hide");
+    })
 </script>
 </html>

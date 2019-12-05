@@ -24,6 +24,29 @@
 </body>
 <script src="../../js/jquery-3.1.1.min.js"></script>
 <script>
+// (function($){ 
+//   $.fn.serializeJson=function(){ 
+//     var serializeObj={}; 
+//     var array=this.serializeArray(); 
+//     var str=this.serialize(); 
+//     $(array).each(function(){ 
+//       if(serializeObj[this.name]){ 
+//         if($.isArray(serializeObj[this.name])&&this .value!=""){ 
+//           serializeObj[this.name].push(this.value); 
+//         }else { 
+//       if(this .value!=""){
+//           serializeObj[this.name]=[serializeObj[this.name],this.value]; 
+//       }           
+//         } 
+//       }else{ 
+//           if(this .value!=""){
+//                serializeObj[this.name]=this.value; 
+//           }          
+//       } 
+//     }); 
+//     return JSON.stringify(serializeObj); 
+//   }; 
+// })(jQuery);
 $(function() {
     // 自定义表单序列化方法
     jQuery.prototype.serializeObject = function(){ 
@@ -40,29 +63,30 @@ $(function() {
     var data;   // 记录form表单数据
 
     // 序列化方法：serialize()
+    // 把表单信息序列化成一个字符串,FirstName=Bill&LastName=Gates 
     $(".btn1").click(function() {
         data = $("#form").serialize();
         $(".result").html(data);
         console.log("serialize: ",data);
     })
     // 序列化方法：serializeArray()
+    // 返回一个数组：[{"name":"FirstName","value":"Bill"},{"name":"LastName","value":"Gates"}]
     $(".btn2").click(function() {
         data = $("#form").serializeArray();
         $(".result").html(JSON.stringify(data));
         console.log("serializeArray: ",data);
     })
-    // 序列化方法：serializeJson()
+    // 自定义序列化方法：serializeObject()
+    // 返回一个对象：{username: "yu5", password: "aaa"}
     $(".btn3").click(function() {
-        data = $("#form").serializeJson();
+        data = $("#form").serializeObject();
         $(".result").html(JSON.stringify(data));
         console.log("serializeJson: ",data);
     })
-    // 自定义序列化方法
-    $(".btn4").click(function() {
-        data = $("#form").serializeObject();
-        $(".result").html(JSON.stringify(data));
-        console.log("自定义序列化方法: ",data);
-    })
+
+    // 参考文章：
+    //  https://www.cnblogs.com/tanzq/p/9857213.html
+    //  https://blog.csdn.net/tyjlearning/article/details/81315621
 })
 </script>
 </html>
