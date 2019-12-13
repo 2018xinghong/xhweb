@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pc布局-上中下-百分比</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body, .box {
+            width: 100%;
+            height: 100%;
+        }
+        .box {
+            position: relative;
+        }
+        .main {
+            width: 100%;
+            height: 100%;
+            padding: 120px 0;
+        }
+        .top {
+            width: 100%;
+            height: 120px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #0f0;
+        }
+        .bottom {
+            width: 100%;
+            height: 120px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: #0f0;
+        }
+        .content {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="top">top</div>
+        <div class="main">
+            <div class="content">
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+                <p>内容区域</p>
+            </div>
+        </div>
+        <div class="bottom">bottom</div>
+    </div>
+</body>
+</html>

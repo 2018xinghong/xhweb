@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回调函数</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 要求，有传传入回调函数，则执行
+    function info(callback) {
+        callback && callback();
+        console.log("info");
+    }
+   
+    info();
+    info(function() {
+        console.log("callback");
+    })
+</script>
+</html>

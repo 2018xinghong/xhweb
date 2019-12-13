@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>form表格记录数据</title>
+</head>
+<body>
+    <form method="post" id="form">
+        <input type="text" name="username"><br>
+        <input type="text" name="password"><br>
+        <input class="btn" type="button" value="提交">
+    </form>
+</body>
+<script src="./js/jquery-3.1.1.min.js"></script>
+<script>
+    // 自定义表单序列化方法
+    jQuery.prototype.serializeObject = function(){ 
+        var obj=new Object(); 
+        $.each(this.serializeArray(),function(index,param){ 
+            if(!(param.name in obj)){ 
+                obj[param.name]=param.value; 
+            } 
+        }); 
+        return obj; 
+    };
+    var data;   // 记录form表单数据
+    $(".btn").click(function() {
+        
+        data = $("#form").serialize();
+        console.log(data);
+        
+        data = $("#form").serializeObject();
+        console.log(data);
+    })
+</script>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iframe自适应</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+
+/* 单伪元素 */
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    line-height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix {
+    *zoom: 1;
+}
+/* 滚动条样式 */
+::-webkit-scrollbar-track-piece {
+    background-color:#f8f8f8;
+}
+::-webkit-scrollbar {
+    width:9px;
+    height:9px;
+}
+::-webkit-scrollbar-thumb {
+    background-color:#dddddd;
+    background-clip:padding-box;
+    min-height:28px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius:25px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color:#bbb;
+    -webkit-border-radius: 25px;
+    -moz-border-radius:25px ;
+    border-radius:25px;
+}
+/* 布局 */
+html, body, .wrap {
+    width: 100%;
+    height: 100%;
+}
+.wrap {
+    position: relative;
+}
+.top {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+    background: skyblue;
+}
+.main {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    width: 100%;
+}
+.left {
+    float: left;
+    width: 200px;
+    height: 100%;
+    background: #f1f1f1;
+}
+.right {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.btn-box {
+    padding: 10px;
+    text-align: center;
+}
+iframe {
+    /* display: block;
+    width: 400px;
+    height: 400px;
+    margin: 40px auto 0; */
+    border: 1px dashed red;
+}
+</style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="top"></div>
+        <div class="main clearfix">
+            <div class="left"></div>
+            <div class="right">
+                <div class="btn-box">
+                    <button class="btn">切换iframe路径</button>
+                </div>
+                <iframe src="./01-thead固定tbody滚动.html" frameborder="0" class="iframe"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/jquery-3.1.1.min.js"></script>
+<script>
+var arr = ["./01-thead固定tbody滚动.html", "./02-pcLayout.html", "./04-iframe自适应.html"]
+$(".btn").click(function() {
+    var index = Math.floor(Math.random()*3);
+    $(".iframe").attr("src", arr[index]);
+})
+</script>
+</html>

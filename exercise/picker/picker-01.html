@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="./WdatePicker.js"></script>
+    <title>时间控件</title>
+    <style>
+    .kuang{
+        border:1px #ff0000 solid;
+    }
+    </style>
+    <script>
+    window.onload = function(){
+        var btn = document.getElementById("btnReg");
+        var txt = document.getElementById("uid");
+        btn.onclick = function(){      
+            if(txt.value.length<=0)
+            {
+                alert("会员名不能为空");
+                txt.className="kuang";
+                return false;
+            }
+        }
+        txt.onblur = function(){
+            if(txt.value.length<=0)
+            {
+                alert("会员名不能为空");
+                this.className="kuang";
+                return false;
+            }else{
+                this.className="";
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+<form action="#" method="post">
+    会员名：<input type="text" name="nickname" id="uid">
+    出生日期：<input type="text" name="birthday" class="Wdate" onclick="WdatePicker()">
+    <div><input type="submit" id="btnReg" value="注册"></div>
+</form>
+</body>
+</html>
