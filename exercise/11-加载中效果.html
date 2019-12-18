@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>加载中效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        .effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            background: #f1f5f7;
+        }
+        .box {
+            width: 100%;
+            height: 100%;
+        }
+        .box ul {
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            -o-transform: translate(-50%);
+            -ms-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            list-style: none;
+        }
+        .box li {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            text-align: center;
+            line-height: 16px;
+            transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            opacity: 0;
+        }
+        .box li:first-child {
+            background: #ff5f5f;
+            animation: move01 2.7s ease-in-out infinite;
+        }
+        .box li:nth-child(2) {
+            background: #ffbb33;
+            animation: move01 2.7s ease-in-out 0.6s infinite;
+        }
+        .box li:last-child {
+            background: #49ceff;
+            animation: move01 2.7s ease-in-out 0.9s infinite;
+        }
+        @keyframes move01 {
+            0% {
+
+            }
+            33% {
+                left: 50%;
+                opacity: 1;
+            }
+            66% {
+                left: 50%;
+                opacity: 1;
+            }
+            100% {
+                left: 30%;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="effect">
+        <div class="box">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
