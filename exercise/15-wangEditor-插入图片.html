@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>15-富文本编辑器-京东</title>
+		<link rel="stylesheet" href="./plug-in/wangEditor2/wangEditor.min.css">
+		<style>
+			.box {
+				width: 1000px;
+				height: 800px;
+				margin: 50px auto;
+			}
+			#editor {
+				height: 700px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div id="editor"></div>
+		</div>
+	</body>
+	<script src="./js/jquery-3.1.1.min.js"></script>
+	<script src="./plug-in/wangEditor2/wangEditor.js"></script>
+	<script>
+		 var editor = new wangEditor("editor");
+		 console.log(editor);
+		 console.log(editor.config);
+
+		 var menus = [
+			'undo',
+			'redo',
+			// '|',
+			// 'fontfamily',
+			// 'fontsize',
+			// 'head',
+			// 'bold',
+			// 'underline',
+			// 'italic',
+			// 'strikethrough',
+			// '|',
+			// 'eraser',
+			// 'forecolor',
+			// 'bgcolor',
+			// 'unorderlist',
+			// 'orderlist',
+			// 'alignleft',
+			// 'aligncenter',
+			// 'alignright',
+			// 'link',
+			// 'unlink',
+			// 'table',
+			'img',
+			// '|',
+			// 'source',
+			'fullscreen',
+			'custom'
+		]
+		editor.config.menus = menus;
+		// 自定义菜单
+		window.wangEditor.createMenu(function(check) {
+			var custom = 'custom';
+			var editor = this;
+			var menu = new wangEditor.Menu({
+				editor: editor,
+				id: custom,
+				title: "自定义",
+				$domNormal: $('<a href="#" tabindex="-1"><i class="wangeditor-menu-img-picture"></i></a>'),
+				$domSelected: $('<a href="#" tabindex="-1" class="selected"><i class="wangeditor-menu-img-picture"></i></a>')
+			});
+
+			// 菜单正常状态下，点击将触发该事件
+			menu.clickEvent = function (e) {
+				console.log("aaa事件");
+			};
+
+			editor.menus[custom] = menu;
+		});
+		
+		editor.create();
+	</script>
+</html>

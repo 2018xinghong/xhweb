@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数组操作</title>
+	</head>
+	<body>
+	</body>
+	<script src="./js/jquery-3.1.1.min.js"></script>
+	<script>
+		var arr = [
+			{
+				"id": "001",
+				"sortNum": 1,
+				"color": "#FF0000",
+				"name": "红色"
+			},
+			{
+				"id": "002",
+				"sortNum": 2,
+				"color": "#990000",
+				"name": "深红色"
+			},
+			{
+				"id": "003",
+				"sortNum": 3,
+				"color": "#FF9900",
+				"name": "橙色"
+			}
+		]
+		var replaceObj = {
+			id: "002",
+			name: "深红色",
+			color: "#990000",
+			sortNum: 222
+		}
+		$(arr).each(function(index, item) {
+			if(item.id == replaceObj.id) {
+				console.log(index, item);
+				item.sortNum = replaceObj.sortNum;
+				
+				// item = replaceObj;	// 直接替换，不起作用
+				return false;
+			}
+		})
+		console.log(arr);
+		
+		// 问题：需要把ＡＳＡ-Ⅱ术后，这种字段按照 Ⅰ Ⅱ Ⅲ Ⅳ Ⅴ 这种顺序，提取到这个数组的最前面
+		var list =  ["门诊患者例数", "住院患者例数", "复苏成功例数","ＡＳＡ-Ⅱ术后" , "ＡＳＡ-Ⅴ术后", "ＡＳＡ-Ⅲ术后", "ＡＳＡ-Ⅳ术后", "ＡＳＡ-Ⅰ术后", "全身麻醉体外循环例数", "由麻醉医师实施", "由麻醉医师实施镇痛"]
+		var reg = /[ⅠⅡⅢⅣⅤ]/;
+		var res = list.filter(function(item) {
+			return reg.test(item) == true;
+		})
+		console.log(res);
+		var temp = [];
+		var lst = [];
+		$(list).each(function(index, item) {
+			if(reg.test(item)) {
+				temp.push(item);
+			}else {
+				lst.push(item);
+			}
+		})
+		console.log(lst, temp);
+	</script>
+</html>

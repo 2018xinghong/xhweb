@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>颜色拾取器</title>
+		<link rel="stylesheet" href="./plug-in/elfColorPicker/jquery.elfColorPicker.css">
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="color">
+		<p>
+			<input type="text" id="putColor_001" value="" size="1" readonly="true" style="background: rgb(204, 102, 51);">
+			<input type="text" id="features_002" value="#FF0000" readonly="true" size="9" style="border: none;">
+			<input type="button" id="" value="..." class="colorPickerTrigger" value-for="features_002" visaul-for="putColor_001">
+		</p>
+	</body>
+	<script src="./js/jquery-3.1.1.min.js"></script>
+	<script src="./plug-in/elfColorPicker/jquery.elfColorPicker.js"></script>
+	<script>
+		$(function(){
+		    //颜色选择器
+		    $(".colorPickerTrigger").elfColorPicker({
+		        triggerType: "button",
+		        extraColorLump:true
+		    });
+		})
+	</script>
+</html>
