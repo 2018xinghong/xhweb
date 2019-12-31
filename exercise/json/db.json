@@ -1,0 +1,148 @@
+{
+  "colorList": [
+    {
+      "id": "001",
+      "sortNum": "1",
+      "color": "#FF0000",
+      "name": "红色"
+    },
+    {
+      "id": "002",
+      "sortNum": 2,
+      "color": "#990000",
+      "name": "深红色"
+    },
+    {
+      "id": "003",
+      "sortNum": 3,
+      "color": "#FF9900",
+      "name": "橙色"
+    },
+    {
+      "id": "004",
+      "sortNum": 4,
+      "color": "#FFFF00",
+      "name": "黄色"
+    },
+    {
+      "id": "005",
+      "sortNum": 5,
+      "color": "#FFFF99",
+      "name": "浅黄色"
+    },
+    {
+      "id": "006",
+      "sortNum": 6,
+      "color": "#66CC33",
+      "name": "草绿色"
+    },
+    {
+      "id": "007",
+      "sortNum": 7,
+      "color": "#339933",
+      "name": "绿色"
+    },
+    {
+      "id": "008",
+      "sortNum": 8,
+      "color": "#0099FF",
+      "name": "浅蓝色"
+    },
+    {
+      "id": "009",
+      "sortNum": 9,
+      "color": "#0033CC",
+      "name": "蓝色"
+    },
+    {
+      "id": "010",
+      "sortNum": 10,
+      "color": "#000066",
+      "name": "深蓝色"
+    },
+    {
+      "id": "011",
+      "sortNum": 11,
+      "color": "#CC99FF",
+      "name": "浅紫色"
+    },
+    {
+      "id": "012",
+      "sortNum": 12,
+      "color": "#660066",
+      "name": "紫色"
+    },
+    {
+      "id": "013",
+      "sortNum": 13,
+      "color": "#FF6666",
+      "name": "玫瑰红色"
+    },
+    {
+      "id": "014",
+      "sortNum": 14,
+      "color": "#FF0066",
+      "name": "粉红色"
+    },
+    {
+      "id": "015",
+      "sortNum": 15,
+      "color": "#CCCC66",
+      "name": "卡其色"
+    },
+    {
+      "id": "016",
+      "sortNum": 16,
+      "color": "#996600",
+      "name": "茶色"
+    },
+    {
+      "id": "017",
+      "sortNum": 17,
+      "color": "#663300",
+      "name": "褐色"
+    },
+    {
+      "id": "018",
+      "sortNum": 18,
+      "color": "#336600",
+      "name": "军绿色"
+    },
+    {
+      "id": "019",
+      "sortNum": 19,
+      "color": "#CCFFFF",
+      "name": "天蓝色"
+    },
+    {
+      "id": "020",
+      "sortNum": 20,
+      "color": "#CCFF00",
+      "name": "荧光色"
+    },
+    {
+      "id": "021",
+      "sortNum": 21,
+      "color": "#FFFFFF",
+      "name": "白色"
+    },
+    {
+      "id": "022",
+      "sortNum": 22,
+      "color": "#CCCCCC",
+      "name": "浅灰色"
+    },
+    {
+      "id": "023",
+      "sortNum": 24,
+      "color": "#000000",
+      "name": "黑色"
+    },
+    {
+      "id": "024",
+      "sortNum": 23,
+      "color": "#666666",
+      "name": "灰色"
+    }
+  ]
+}

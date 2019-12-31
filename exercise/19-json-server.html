@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>json-server使用</title>
+	</head>
+	<body>
+		<h2>操作</h2>
+		<button class="btn1">get操作</button>
+		<button class="btn2">post操作</button>
+		<input type="text" class="in" value="" placeholder="颜色">
+		<button class="btn3">patch操作</button>
+		<h2>操作结果</h2>
+		<div class="result"></div>
+	</body>
+	<script src="./js/jquery-3.1.1.min.js"></script>
+	<script>
+		$(".btn1").click(function() {
+			$.ajax({
+				url: "http://localhost:3000/colorList",
+				type: "get",
+				dataType: "json",
+				success: function(res) {
+					console.log(res);
+					$(".result").text(JSON.stringify(res));
+				}
+			})
+		})
+		var id = 25;
+		$(".btn2").click(function() {
+			var obj = {
+				// "id": "0"+id,
+				"sortNum": 20,
+				"color": "#CCFF00",
+				"name": "荧光色"
+			}
+			id++;
+			$.ajax({
+				url: "http://localhost:3000/colorList",
+				type: "post",
+				data: obj,
+				dataType: "json",
+				success: function(res) {
+					$(".result").text("post success");
+				},
+				error: function(res) {
+					$(".result").text("post error");
+				}
+			})
+		})
+		$(".btn3").click(function() {
+			var id = "001";
+			$.ajax({
+				url: "http://localhost:3000/colorList/"+id,
+				type: "patch",
+				data: {
+					name: $(".in").val()
+				},
+				dataType: "json",
+				success: function(res) {
+					$(".result").text("patch success");
+				},
+				error: function(res) {
+					$(".result").text("patch success");
+				}
+			})
+		})
+	</script>
+</html>
