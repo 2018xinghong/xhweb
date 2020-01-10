@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        #box {
+            width: 660px;
+            border: 1px solid grey;
+            background: #eee;
+            margin: 0 auto;
+        }
+        #box>ul {
+            position: relative;
+            width: 100%;
+            height: 660px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: space-between;
+        }
+        #box>ul>li {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        a {
+            position: absolute;
+            top: 100px;
+            left: 30px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/jquery-3.1.1.min.js"></script>
+    <script>
+        $(function () {
+            var arr = [];
+            var oRan = [];
+            var flog = true;
+            for (let i = 0; i < $('li').length; i++) {
+                arr.push({
+                    l: $('li').eq(i).position().left,
+                    t: $('li').eq(i).position().top
+                })
+            }
+            for (let j = 0; j < $('li').length; j++) {
+                $('li').eq(j).css({
+                    position: 'absolute',
+                    left: arr[j].l + 'px',
+                    top: arr[j].t + 'px'
+                })
+            }
+            $('a').click(function(){
+                oRan = [];
+                while(oRan.length < arr.length){
+                    let num = ren(0,arr.length);
+                        if(oRan.indexOf(num)==-1){
+                            oRan.push(num)
+                        }
+                }
+                for(let i = 0; i < $('li').length;i++){
+                    $('li').eq(oRan[i]).animate({left:arr[i].l,top:arr[i].t})
+                }
+            })
+            var posi = {x:0,y:0}
+            $('li').mousedown(function(ev){
+                if(!flog) return;
+                flog = false;
+                this.x = ev.clientX - $(this).position().left;
+                this.y = ev.clientY - $(this).position().top;
+                posi.x = $(this).position().left;
+                posi.y = $(this).position().top
+                $(document).mousemove((event)=>{
+                    $(this).css({
+                        left:event.clientX - this.x +'px',
+                        top:event.clientY - this.y +'px'
+                    })
+                    let _index = near($(this));
+                    if(_index!=-1){
+                        $('li').css('border','none')
+                        $('li').eq(_index).css('border','2px solid red')
+                    }else{
+                        $('li').css('border','none')
+                    }
+                    event.preventDefault && event.preventDefault();
+                })
+                $(document).mouseup(()=>{
+                    $(document).off('mousemove');
+                    $(document).off('mouseup')
+                    let _index = near($(this));
+                    $('li').css('border','none')
+                    if(_index != -1){
+                        Commutator($(this),$('li').eq(_index),posi)
+                        return;
+                    }
+                    $(this).animate({left:posi.x+'px',top:posi.y+'px'},function(){
+                        flog = true;
+                    })
+                })
+            })
+            //  互换位置
+                function Commutator(obj1,obj2,arr){
+                    obj1.animate({left:obj2.position().left+'px',top:obj2.position().top+'px'})
+                    obj2.animate({left:arr.x+'px',top:arr.y+'px'},function(){
+                        flog = true;
+                    })
+                }
+            //  循环检测碰撞
+                function near(obj){
+                    let _index = -1
+                    for(let i = 0 ;i < $('li').length;i++){
+                            if(obj.index()  != i ){
+                                if(collision(obj,$('li').eq(i))){
+                                    _index = i
+                                }
+                            }
+                    }   
+                    return _index;
+                }
+            // 碰撞检测
+            function collision(obj1, obj2) {
+                var L1 = obj1.position().left;
+                var R1 = L1 + obj1.width();
+                var T1 = obj1.position().top;
+                var B1 = T1 + obj1.height();
+
+                var L2 = obj2.position().left;
+                var R2 = L2 + obj2.width();
+                var T2 = obj2.position().top;
+                var B2 = T2 + obj2.height();
+
+                if (R2 < L1 || B2 < T1 || T2 > B1 || L2 > R1) {  // 未碰撞成功的几种情况
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            // 随机函数
+            function ren(n, m) {
+                return parseInt(Math.random() * (m - n) + n);
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li><img src="./img/eg_dragdrop_w3school.gif" alt=""></li>
+            <li><img src="./vue/element-dev/examples/assets/images/efficiency.png" alt=""></li>
+            <li><img src="./vue/Vue2.0-ShoppingCart-MOOC-master/完成课程/img/test1.jpg" alt=""></li>
+            <li><img src="./vue/Vue2.0-ShoppingCart-MOOC-master/完成课程/img/goods-1.jpg" alt=""></li>
+            <li><img src="./vue/Vue2.0-ShoppingCart-MOOC-master/完成课程/img/goods-2.jpg" alt=""></li>
+            <li><img src="./vue/Vue2.0-ShoppingCart-MOOC-master/完成课程/img/part-1.jpg" alt=""></li>
+            <li><img src="./vue/Vue2.0-ShoppingCart-MOOC-master/完成课程/img/part-2.jpg" alt=""></li>
+            <li><img src="./vue/Vue2.0-ShoppingCart-MOOC-master/完成课程/img/test.jpg" alt=""></li>
+            <li><img src="./picker/WdatePicker时间插件/My97DatePicker/skin/whyGreen/img.gif" alt=""></li>
+        </ul>
+    </div>
+    <a href="jacascript:;">随机</a>
+</body>
+
+</html>

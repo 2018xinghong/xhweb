@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>拖拽-test</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.box {
+				width: 600px;
+				height: 400px;
+				margin: 20px auto;
+				position: relative;
+			}
+			ul {
+				position: absolute;
+				width: 400px;
+				height: 72px;
+				padding: 10px;
+				overflow: hidden;
+				list-style: none;
+				background: #f5f7f9;
+			}
+			ul li {
+				float: left;
+				margin-right: 10px;
+				border: 1px dashed #fa0;
+				cursor: move;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li draggable="true" id="drag-01" ondragstart="drag(event)"><img src="./img/eg_dragdrop_w3school.gif" alt=""></li>
+				<li draggable="true" id="drag-02"><img src="./img/eg_dragdrop_w3school.gif" alt=""></li>
+			</ul>
+			<ul style="top:102px;" ondragover="allowDrag(event)" ondrop="drop(event)"></ul>
+		</div>
+	</body>
+	<script>
+		// ondragstart: 设置被拖动数据
+		function drag(ev) {
+			ev.dataTransfer.setData("text", ev.target.id);
+		}
+		// ondragover: 规定在何处放置被拖动的数据
+		function allowDrag(event) {
+			event.preventDefault();
+		}
+		// ondrop: 放置被拖数据
+		function drop(ev) {
+			ev.preventDefault();
+			var data = ev.dataTransfer.getData("text");
+			var dom = document.getElementById(data);
+			console.log(data);
+			console.log(ev.target);
+			ev.target.appendChild(dom);
+		}
+	</script>
+</html>
